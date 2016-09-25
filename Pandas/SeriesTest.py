@@ -25,7 +25,7 @@ obj2 = pd.Series(data)
 # print(obj2.isnull())
 obj2.index = ['bob', 'steve', 'jeff']
 print(obj2)
-print("helloworld")
+
 
 
 
