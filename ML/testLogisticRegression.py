@@ -5,7 +5,7 @@ X = [[1, 1, 1],
      [1, 1, 1],
      [0, 0, 0]]
 Y = [1, 1, 0]
-lr = linear_model.LogisticRegression()
+lr = linear_model.LogisticRegression(C=1, penalty='l2', tol=0.01)
 lr.fit(X, Y)
 
 print(lr.coef_)
