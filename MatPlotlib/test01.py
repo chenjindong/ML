@@ -1,35 +1,25 @@
+"""
+Simple demo with multiple subplots.
+"""
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 
 
-def update_line(num, data, line):
-    line.set_data(data[..., :num])
-    return line,
+x1 = np.linspace(0.0, 5.0)
+x2 = np.linspace(0.0, 2.0)
 
-fig1 = plt.figure()
+y1 = np.cos(2 * np.pi * x1) * np.exp(-x1)
+y2 = np.cos(2 * np.pi * x2)
 
-data = np.random.rand(2, 25)
-l, = plt.plot([], [], 'r-')
-plt.xlim(0, 1)
-plt.ylim(0, 1)
-plt.xlabel('x')
-plt.title('test')
-line_ani = animation.FuncAnimation(fig1, update_line, 25, fargs=(data, l),
-                                   interval=50, blit=True)
-#line_ani.save('lines.mp4')
+plt.subplot(2, 1, 1)
+plt.plot(x1, y1, 'yo-')
+plt.title('A tale of 2 subplots')
+plt.ylabel('Damped oscillation')
 
-fig2 = plt.figure()
-
-x = np.arange(-9, 10)
-y = np.arange(-9, 10).reshape(-1, 1)
-base = np.hypot(x, y)
-ims = []
-for add in np.arange(15):
-    ims.append((plt.pcolor(x, y, base + add, norm=plt.Normalize(0, 30)),))
-
-im_ani = animation.ArtistAnimation(fig2, ims, interval=50, repeat_delay=3000,
-                                   blit=True)
-#im_ani.save('im.mp4', metadata={'artist':'Guido'})
+plt.subplot(2, 1, 2)
+plt.plot(x2, y2, 'r.-')
+plt.xlabel('time (s)')
+plt.ylabel('Undamped')
+plt.title('cjd')
 
 plt.show()
