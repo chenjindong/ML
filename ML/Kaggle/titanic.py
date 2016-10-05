@@ -1,6 +1,7 @@
 # [ 0.77653631  0.7877095   0.78089888  0.76404494  0.81920904] Logistic Regression
 # [ 0.83798883  0.82122905  0.80898876  0.79775281  0.85875706] SVM with RBF
 # [ 0.83798883  0.82122905  0.80898876  0.79775281  0.85875706] SVM with linear Kernal
+# [ 0.79329609  0.79329609  0.86516854  0.78089888  0.84180791] Random Forest
 from sklearn import linear_model
 import pandas as pd
 import numpy as np
@@ -8,6 +9,7 @@ from sklearn import svm
 from matplotlib import pyplot as plt
 from sklearn import cross_validation
 from sklearn import preprocessing
+from sklearn import ensemble
 
 # data pre-processing
 data = pd.read_csv("C:\\Users\\cjd\\Desktop\\titanic\\train.csv")
@@ -26,16 +28,22 @@ trainX = scaler.transform(trainX)
 
 # model selection
 # Logistic Regression
-lr = linear_model.LogisticRegression()
-lr.fit(trainX, trainY)
-scores = cross_validation.cross_val_score(lr, trainX, trainY, cv=5)
+# lr = linear_model.LogisticRegression()
+# lr.fit(trainX, trainY)
+# scores = cross_validation.cross_val_score(lr, trainX, trainY, cv=5)
+# print(scores)
+# # SVM
+# svc = svm.SVC()
+# svc.fit(trainX, trainY)
+# scores = cross_validation.cross_val_score(svc, trainX, trainY, cv=5)
+# print(scores)
+# Random Forest
+rf = ensemble.RandomForestClassifier(n_estimators=50, max_features=8)
+rf.fit(trainX, trainY)
+print(rf)
+scores = cross_validation.cross_val_score(rf, trainX, trainY, cv=5)
 print(scores)
 
-# SVM
-svc = svm.SVC()
-svc.fit(trainX, trainY)
-scores = cross_validation.cross_val_score(svc, trainX, trainY, cv=5)
-print(scores)
 
 # predict
 data = pd.read_csv("C:\\Users\\cjd\\Desktop\\titanic\\test.csv")
@@ -49,7 +57,7 @@ for i in np.arange(3):
     testX[embarked.columns.values[i]] = embarked[embarked.columns.values[i]]
 testX = scaler.transform(testX)
 
-Y = svc.predict(testX)
+Y = rf.predict(testX)
 result = pd.DataFrame({'Survived': Y}, columns={'PassengerId', 'Survived'})
 result['PassengerId'] = data['PassengerId']
 result.to_csv("C:\\Users\\cjd\\Desktop\\titanic\\output.csv")
