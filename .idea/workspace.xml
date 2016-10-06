@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c206c72d-97b1-4160-917a-02125dd36b19" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PythonML.iml" afterPath="$PROJECT_DIR$/.idea/PythonML.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pandas/DataFrameTest.py" afterPath="$PROJECT_DIR$/Pandas/DataFrameTest.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ML/Kaggle/titanic01.py" afterPath="$PROJECT_DIR$/ML/Kaggle/titanic.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ML/LinearRegressionDemo.py" afterPath="$PROJECT_DIR$/ML/Algorithm/LinearRegressionDemo.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ML/LogisticRegressionDemo.py" afterPath="$PROJECT_DIR$/ML/Algorithm/LogisticRegressionDemo.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ML/PreprocessingDemo.py" afterPath="$PROJECT_DIR$/ML/Algorithm/PreprocessingDemo.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ML/RandomForestDemo.py" afterPath="$PROJECT_DIR$/ML/Algorithm/RandomForestDemo.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ML/SVMDemo.py" afterPath="$PROJECT_DIR$/ML/Algorithm/SVMDemo.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ML/irisDemo.py" afterPath="$PROJECT_DIR$/ML/Algorithm/irisDemo.py" />
     </list>
     <ignored path="PythonML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,14 +30,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="titanic.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ML/Kaggle/titanic.py">
+      <file leaf-file-name="airport.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ML/airport.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="252">
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,18 +68,19 @@
         <option value="$PROJECT_DIR$/ML/iris.py" />
         <option value="$PROJECT_DIR$/ML/irisDemo.py" />
         <option value="$PROJECT_DIR$/ML/PreprocessingDemo.py" />
-        <option value="$PROJECT_DIR$/ML/Kaggle/titanic.py" />
         <option value="$PROJECT_DIR$/ML/RandomForestDemo.py" />
         <option value="$PROJECT_DIR$/Pandas/DataFrameTest.py" />
         <option value="$PROJECT_DIR$/ML/Kaggle/titanic01.py" />
+        <option value="$PROJECT_DIR$/ML/Kaggle/titanic.py" />
+        <option value="$PROJECT_DIR$/ML/airport.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
-    <option name="y" value="8" />
-    <option name="width" value="1370" />
-    <option name="height" value="744" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -121,6 +126,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -149,46 +155,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Pandas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Kaggle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -198,12 +171,13 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Pycharm\PythonML\ML\Algorithm" />
       <recent name="E:\Pycharm\PythonML\ML" />
       <recent name="E:\Pycharm\Workspace\PythonML\ML" />
       <recent name="E:\Pycharm\Workspace\PythonML\ML\Kaggle" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.titanic01">
+  <component name="RunManager" selected="Python.airport">
     <configuration default="false" name="titanic (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -221,23 +195,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="PreprocessingDemo" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ML" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PythonML" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML/PreprocessingDemo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="RandomForestDemo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -250,7 +207,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PythonML" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML/RandomForestDemo.py" />
+      <option name="SCRIPT_NAME" value="D:\Pycharm\PythonML\ML\Algorithm\RandomForestDemo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -285,6 +242,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PythonML" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pandas/DataFrameTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="airport" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ML" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PythonML" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML/airport.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -425,18 +399,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.titanic (1)" />
-      <item index="1" class="java.lang.String" itemvalue="Python.PreprocessingDemo" />
-      <item index="2" class="java.lang.String" itemvalue="Python.RandomForestDemo" />
-      <item index="3" class="java.lang.String" itemvalue="Python.titanic01" />
-      <item index="4" class="java.lang.String" itemvalue="Python.DataFrameTest" />
+      <item index="1" class="java.lang.String" itemvalue="Python.RandomForestDemo" />
+      <item index="2" class="java.lang.String" itemvalue="Python.titanic01" />
+      <item index="3" class="java.lang.String" itemvalue="Python.DataFrameTest" />
+      <item index="4" class="java.lang.String" itemvalue="Python.airport" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.titanic01" />
-        <item index="1" class="java.lang.String" itemvalue="Python.DataFrameTest" />
-        <item index="2" class="java.lang.String" itemvalue="Python.RandomForestDemo" />
-        <item index="3" class="java.lang.String" itemvalue="Python.titanic (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.PreprocessingDemo" />
+        <item index="0" class="java.lang.String" itemvalue="Python.airport" />
+        <item index="1" class="java.lang.String" itemvalue="Python.titanic01" />
+        <item index="2" class="java.lang.String" itemvalue="Python.DataFrameTest" />
+        <item index="3" class="java.lang.String" itemvalue="Python.RandomForestDemo" />
+        <item index="4" class="java.lang.String" itemvalue="Python.titanic (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -454,15 +428,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="8" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21048744" sideWeight="0.49170125" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14744602" sideWeight="0.49170125" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4951246" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23696682" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23618636" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719395" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21010248" sideWeight="0.50829875" order="2" side_tool="true" content_ui="tabs" />
@@ -501,9 +475,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ML/Kaggle/titanic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -515,28 +495,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/RandomForestDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/RandomForestDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/irisDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/irisDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/irisDemo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ML/Kaggle/titanic.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/irisDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -550,7 +523,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/SVMDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Kaggle/titanic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/SVMDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
           <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
@@ -572,7 +552,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ML/LogisticRegression.py" />
-    <entry file="file://$PROJECT_DIR$/ML/LinearRegressionDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/LinearRegressionDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
@@ -580,14 +560,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ML/LogisticRegression.py" />
-    <entry file="file://$PROJECT_DIR$/ML/LogisticRegressionDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/LogisticRegressionDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/LinearRegressionDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/LinearRegressionDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
@@ -631,77 +611,55 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ML/LogisticRegression.py" />
-    <entry file="file://$PROJECT_DIR$/ML/LinearRegressionDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/LinearRegressionDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/LogisticRegressionDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/LogisticRegressionDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/SVMDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/SVMDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/irisDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/irisDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/PreprocessingDemo.py">
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/PreprocessingDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/preprocessing/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/ensemble/forest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="859" column="8" selection-start-line="859" selection-start-column="8" selection-end-line="859" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ML/RandomForestDemo.py">
+    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/preprocessing/data.py" />
+    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/ensemble/forest.py" />
+    <entry file="file://$PROJECT_DIR$/ML/Algorithm/RandomForestDemo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/utils/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="378" column="25" selection-start-line="378" selection-start-column="25" selection-end-line="378" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/utils/validation.py" />
     <entry file="file://$PROJECT_DIR$/Pandas/DataFrameTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -713,21 +671,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/svm/classes.py">
+    <entry file="file://E:/Anaoconda/Anaconda3-4.1.1/Lib/site-packages/sklearn/svm/classes.py" />
+    <entry file="file://$PROJECT_DIR$/ML/Kaggle/titanic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4541">
-          <caret line="673" column="10" selection-start-line="673" selection-start-column="8" selection-end-line="673" selection-end-column="10" />
+        <state relative-caret-position="223">
+          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/Kaggle/titanic.py">
+    <entry file="file://$PROJECT_DIR$/ML/airport.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="252">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
