@@ -20,11 +20,7 @@ import numpy as np
 # print('a' in obj1)  # a is index
 
 data = {'cjd': 23, 'slm': 22, 'bob': 18}
-obj2 = pd.Series(data)
-# print(obj2)
-# print(obj2.isnull())
-obj2.index = ['bob', 'steve', 'jeff']
-print(obj2)
+print(data)
 
 
 

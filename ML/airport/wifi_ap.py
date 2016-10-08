@@ -1,0 +1,27 @@
+import pandas as pd
+
+
+wifi_ap = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\WIFI_AP_Passenger_Records_chusai_1stround.csv')
+print(len(wifi_ap.WIFIAPTag.unique()))
+# print(wifi_ap.info())
+# print(wifi_ap.tail())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-10') & (wifi_ap['timeStamp'] > '2016-09-10-19-00') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-20') & (wifi_ap['timeStamp'] > '2016-09-10-19-10') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-30') & (wifi_ap['timeStamp'] > '2016-09-10-19-20') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-40') & (wifi_ap['timeStamp'] > '2016-09-10-19-30') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-50') & (wifi_ap['timeStamp'] > '2016-09-10-19-40') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-00') & (wifi_ap['timeStamp'] > '2016-09-10-19-50') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-10') & (wifi_ap['timeStamp'] > '2016-09-10-20-00') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-20') & (wifi_ap['timeStamp'] > '2016-09-10-20-10') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-30') & (wifi_ap['timeStamp'] > '2016-09-10-20-20') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-40') & (wifi_ap['timeStamp'] > '2016-09-10-20-30') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-50') & (wifi_ap['timeStamp'] > '2016-09-10-20-40') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-00') & (wifi_ap['timeStamp'] > '2016-09-10-20-50') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-10') & (wifi_ap['timeStamp'] > '2016-09-10-21-00') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-20') & (wifi_ap['timeStamp'] > '2016-09-10-21-10') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-30') & (wifi_ap['timeStamp'] > '2016-09-10-21-20') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-40') & (wifi_ap['timeStamp'] > '2016-09-10-21-30') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-50') & (wifi_ap['timeStamp'] > '2016-09-10-21-40') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
+# result = wifi_ap[wifi_ap['WIFIAPTag'] == 'WC-3C<WC-2-14>']
+# result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\WC-3C(WC-2-14).csv')
