@@ -10,7 +10,6 @@ data = {'state': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada'],
 df = pd.DataFrame(data,  columns=['state', 'year', 'pop', 'debt'])
 print(df.info())  # get the data type and non-null data number
 # print(df[df.state])
-
 print(df.iloc[:, 0])
 
 
