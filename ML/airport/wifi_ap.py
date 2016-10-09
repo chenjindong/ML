@@ -1,27 +1,31 @@
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 wifi_ap = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\WIFI_AP_Passenger_Records_chusai_1stround.csv')
-print(len(wifi_ap.WIFIAPTag.unique()))
+tags = wifi_ap[(wifi_ap.WIFIAPTag < 'E3') & (wifi_ap.WIFIAPTag > 'E2')].WIFIAPTag.unique()
+print(tags)
+
+
 # print(wifi_ap.info())
 # print(wifi_ap.tail())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-10') & (wifi_ap['timeStamp'] > '2016-09-10-19-00') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-20') & (wifi_ap['timeStamp'] > '2016-09-10-19-10') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-30') & (wifi_ap['timeStamp'] > '2016-09-10-19-20') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-40') & (wifi_ap['timeStamp'] > '2016-09-10-19-30') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-19-50') & (wifi_ap['timeStamp'] > '2016-09-10-19-40') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-00') & (wifi_ap['timeStamp'] > '2016-09-10-19-50') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-10') & (wifi_ap['timeStamp'] > '2016-09-10-20-00') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-20') & (wifi_ap['timeStamp'] > '2016-09-10-20-10') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-30') & (wifi_ap['timeStamp'] > '2016-09-10-20-20') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-40') & (wifi_ap['timeStamp'] > '2016-09-10-20-30') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-20-50') & (wifi_ap['timeStamp'] > '2016-09-10-20-40') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-00') & (wifi_ap['timeStamp'] > '2016-09-10-20-50') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-10') & (wifi_ap['timeStamp'] > '2016-09-10-21-00') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-20') & (wifi_ap['timeStamp'] > '2016-09-10-21-10') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-30') & (wifi_ap['timeStamp'] > '2016-09-10-21-20') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-40') & (wifi_ap['timeStamp'] > '2016-09-10-21-30') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# print(wifi_ap[(wifi_ap['timeStamp'] < '2016-09-10-21-50') & (wifi_ap['timeStamp'] > '2016-09-10-21-40') & (wifi_ap['WIFIAPTag'] == 'E1-1A-1<E1-1-01>')].passengerCount.mean())
-# result = wifi_ap[wifi_ap['WIFIAPTag'] == 'WC-3C<WC-2-14>']
-# result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\WC-3C(WC-2-14).csv')
+
+# result = wifi_ap[wifi_ap['WIFIAPTag'] == 'E1-2A<E1-2A-06>']
+# result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\wifi_ap_preprocess\\E1-2A(E1-2A-06).csv')
+
+x = np.arange(0, 4000, 1)
+left = 0
+right = 4000
+
+y = wifi_ap[wifi_ap.WIFIAPTag == 'E1-1A-1<E1-1-01>'].passengerCount[left:right]
+plt.plot(x, y, color='red')
+
+y = wifi_ap[wifi_ap.WIFIAPTag == 'E2-3B<E2-3-20>'].passengerCount[left:right]
+plt.plot(x, y, color='green')
+
+y = wifi_ap[wifi_ap.WIFIAPTag == 'E2-3B<E2-3-21>'].passengerCount[left:right]
+plt.plot(x, y, color='blue')
+plt.grid()
+plt.show()
+
