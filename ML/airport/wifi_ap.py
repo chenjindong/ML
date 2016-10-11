@@ -11,8 +11,8 @@ wifi_ap = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\WIFI_AP_Passenger_Recor
 # print(wifi_ap.info())
 # print(wifi_ap.tail())
 
-# result = wifi_ap[(wifi_ap['timeStamp'] > '2016-09-13-15') & (wifi_ap['timeStamp'] < '2016-09-13-18')]
-# result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\wifi_ap_preprocess\\data01.csv')
+result = wifi_ap[(wifi_ap.WIFIAPTag > 'W1') & (wifi_ap.WIFIAPTag < 'W3')]
+result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\wifi_ap_preprocess\\data01.csv')
 
 
 # x = np.arange(0, 4000, 1)

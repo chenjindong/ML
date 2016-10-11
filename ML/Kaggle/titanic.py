@@ -4,6 +4,7 @@ from sklearn import svm
 from sklearn import ensemble
 from sklearn import cross_validation
 from sklearn import preprocessing
+# from sklearn.ensemble import GradientBoostingClassifier
 
 data = pd.read_csv("C:\\Users\\cjd\\Desktop\\titanic\\train.csv")
 trainX = data.drop(['Name', 'Ticket', 'Cabin', 'Survived', 'PassengerId'], axis=1)
@@ -23,7 +24,7 @@ trainX = scaler.transform(trainX)
 
 # 模型选择
 # logistic regression
-lr = linear_model.LogisticRegression()
+lr = linear_model.LogisticRegression(penalty='l1')
 lr.fit(trainX, trainY)
 scores = cross_validation.cross_val_score(lr, trainX, trainY, cv=5)
 print(scores.mean())
@@ -37,6 +38,11 @@ rf = ensemble.RandomForestClassifier(n_estimators=100)
 rf.fit(trainX, trainY)
 scores = cross_validation.cross_val_score(rf, trainX, trainY, cv=5)
 print(scores.mean())
+# GBDT
+gbdt = ensemble.GradientBoostingClassifier()
+gbdt.fit(trainX, trainY)
+scores = cross_validation.cross_val_score(gbdt, trainX, trainY, cv=5)
+print(scores.mean())
 
 # 预测
 data = pd.read_csv("C:\\Users\\cjd\\Desktop\\titanic\\test.csv")
@@ -49,6 +55,6 @@ sex = pd.get_dummies(testX['Sex'])
 testX = testX.drop(['Sex'], axis=1).join(sex)
 testX = scaler.transform(testX)
 
-testY = rf.predict(testX)
+testY = gbdt.predict(testX)
 result = pd.DataFrame({'PassengerId': data['PassengerId'], 'Survived': testY})
 result.to_csv("C:\\Users\\cjd\\Desktop\\titanic\\output.csv")
