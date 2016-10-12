@@ -24,7 +24,7 @@ trainX = scaler.transform(trainX)
 
 # 模型选择
 # logistic regression
-lr = linear_model.LogisticRegression(penalty='l1')
+lr = linear_model.LogisticRegression(penalty='l2', C=0.1)
 lr.fit(trainX, trainY)
 scores = cross_validation.cross_val_score(lr, trainX, trainY, cv=5)
 print(scores.mean())
