@@ -16,12 +16,9 @@ for i in result.index.tolist():
     result.loc[i, 'actual_flt_time'] = temp
     if len(temp) != 18:
         result = result.drop(i)  # 删除某行
-result = result.drop(691)
+result = result.drop(691)  # 删除异常行
 
-result = result[(result.actual_flt_time > '2016/9/14 07') & (result.actual_flt_time < '2016/9/14 10')]
-
+result = result[(result.actual_flt_time > '2016/9/14 07') & (result.actual_flt_time < '2016/9/14 10')]  # 取预测时间内的信息
 gate = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\airport_gz_gates.csv')
-
-result = pd.merge(result, gate, left_on='BGATE_ID', right_on='BGATE_ID')
-
+result = pd.merge(result, gate, left_on='BGATE_ID', right_on='BGATE_ID')  # gate和flight合并
 result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\flight\\flight.csv')

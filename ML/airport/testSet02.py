@@ -41,4 +41,14 @@ for col1 in WIFIAPTag:
             idx += 1
         data.append([temp/30.0, col1, col2])
 df = pd.DataFrame(data, columns=['passengerCount', 'WIFIAPTag', 'slice10min'])
-df.to_csv('C:\\Users\\cjd\\Desktop\\airport\\testSet\\airport_gz_passenger_predict.csv')
+# df.to_csv('C:\\Users\\cjd\\Desktop\\airport\\testSet\\airport_gz_passenger_predict.csv')
+
+
+
+
+
+
+
+
+
+

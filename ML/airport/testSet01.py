@@ -1,25 +1,21 @@
 import pandas as pd
 
-time = []
-for hour in [15, 16, 17]:
-    for minute in range(60):
-        if minute < 10:
-            temp = '0' + str(minute)
-        else:
-            temp = str(minute)
-        time.append('2016-09-14-' + str(hour) + '-' + temp)
-# df = pd.DataFrame({'time': time})
-# df.to_csv('C:\\Users\\cjd\\Desktop\\airport\\testSet\\time.csv')
+flight = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\flight\\flight.csv')
+predict = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\testSet\\airport_gz_passenger_predict.csv')
 
-wifi_ap = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\WIFI_AP_Passenger_Records_chusai_1stround.csv')
-WIFIAPTag = wifi_ap.WIFIAPTag.unique().tolist()
-data = []
-for col1 in WIFIAPTag:
-    for col2 in time:
-        data.append([0, col1, col2])
-# df = pd.DataFrame(data, columns=['passengerCount', 'WIFIAPTag', 'time'])
-# df.to_csv('C:\\Users\\cjd\\Desktop\\airport\\testSet\\airport_gz_passenger_predict.csv')
+for i in flight.index.tolist():
+    ftime, fgate = flight.loc[i, 'actual_flt_time'], flight.loc[i, 'BGATE_AREA']
+    ftime_num = (int(ftime[10])+8)*6+int(ftime[12])
+    for j in predict.index.tolist():
+        ptime, pgate = predict.loc[j, 'slice10min'], predict.loc[j, 'WIFIAPTag'][0:2]
+        ptime_num = (int(ptime[11:13]))*6+int(ptime[14])
+        if fgate == pgate:
+            if (ftime_num == ptime_num) & (predict.loc[j, 'passengerCount'] > 0.5):
+                predict.loc[j, 'passengerCount'] -= 0.5
+            temp = ftime_num-ptime_num
+            if (temp > 0) & (temp < 6):
+                predict.loc[j, 'passengerCount'] += (6-temp)*0.1
 
-
+predict.to_csv('C:\\Users\\cjd\\Desktop\\airport\\testSet\\airport_gz_passenger_predict01.csv')
 
 
