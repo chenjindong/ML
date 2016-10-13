@@ -11,6 +11,12 @@ df = pd.DataFrame(data,  columns=['state', 'year', 'pop', 'debt'])
 # print(df.info())  # get the data type and non-null data number
 # print(type(df.values))
 # print(df)
+l = df.state.count()
+# for i in range(l):
+
+
+df.loc[0, 'state'] = 'jaa'  # 获取dataframe中的某个元素
+print(df)
 
 
 

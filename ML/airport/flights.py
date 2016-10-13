@@ -2,25 +2,26 @@ import pandas as pd
 
 data = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\airport_gz_flights_chusai_1stround.csv')
 
-result = data.dropna(how='any') # 删除有空值的列
+result = data.dropna(how='any').copy() # 删除有空值的列
 # result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\flight\\flight.csv')
+result = result.drop(['scheduled_flt_time'], axis=1)
 
-
-actual_flt_time = result.actual_flt_time.tolist()
-newcolumn = []
-for time in actual_flt_time:
+l = result.flight_ID.count()
+for i in result.index.tolist():
+    time = result.loc[i, 'actual_flt_time']
     if len(time) != 18:
-        newcolumn.append(time[0:10]+'0'+time[10:])
-        # print(time[0:10]+'0'+time[10:])
-    elif len(time) == 18:
-        newcolumn.append(time)
+        temp = time[0:10]+'0'+time[10:]
     else:
-        print('hahah')
-print(len(newcolumn))
-result = result.drop(['actual_flt_time'], axis=1)
-print(newcolumn)
-df = pd.DataFrame({'actual_flt_time': newcolumn}, columns=['actual_flt_time'])
-result = result.join(df)
-print(result.info())
-result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\flight\\flight.csv')
+        temp = time
+    result.loc[i, 'actual_flt_time'] = temp
+    if len(temp) != 18:
+        result = result.drop(i)  # 删除某行
+result = result.drop(691)
 
+result = result[(result.actual_flt_time > '2016/9/14 07') & (result.actual_flt_time < '2016/9/14 10')]
+
+gate = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\airport_gz_gates.csv')
+
+result = pd.merge(result, gate, left_on='BGATE_ID', right_on='BGATE_ID')
+
+result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\flight\\flight.csv')
