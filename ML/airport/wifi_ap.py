@@ -3,16 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-wifi_ap = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\WIFI_AP_Passenger_Records_chusai_1stround.csv')
-# tags = wifi_ap[(wifi_ap.WIFIAPTag < 'E3') & (wifi_ap.WIFIAPTag > 'E2')].WIFIAPTag.unique()
-# print(tags)
+wifi_ap = pd.read_csv('C:\\Users\\cjd\\Desktop\\airport\\WIFI_AP_Passenger_Records_chusai_2ndround.csv')
 
 
-# print(wifi_ap.info())
+print(wifi_ap.info())
 # print(wifi_ap.tail())
 
-result = wifi_ap[(wifi_ap.WIFIAPTag > 'W1') & (wifi_ap.WIFIAPTag < 'W3')]
-result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\wifi_ap_preprocess\\data01.csv')
+# result = wifi_ap[(wifi_ap.WIFIAPTag > 'W1') & (wifi_ap.WIFIAPTag < 'W3')]
+result = wifi_ap[wifi_ap.WIFIAPTag == 'E1-1A-1<E1-1-01>']
+
+result.to_csv('C:\\Users\\cjd\\Desktop\\airport\\wifi_ap\\data01.csv')
 
 
 # x = np.arange(0, 4000, 1)
