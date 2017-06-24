@@ -11,7 +11,7 @@
 # add(a)
 # print(a)
 
-# list不需要global声明，普通变量需要global声明
+# list不需要global声明，普通变量需要global声明.
 def show():
     #global a
    # a = 12
