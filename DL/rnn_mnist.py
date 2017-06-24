@@ -26,7 +26,6 @@ def compute_accuracy(v_xs, v_ys):
 
 def RNN(X):
     '''
-    tip: input dimensions and hidden units of the first layer must be same
     :param X: (batch_size, time_steps, inputs_dim)
     :return prediction: (batch_size,10)
     '''
