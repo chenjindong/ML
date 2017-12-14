@@ -5,15 +5,12 @@ import re
 
 time.clock()
 
-MODE = 'train'
-
-maxQLen = 30
-maxWordLen = 5
-
+maxQLen = 30  # question的最大长度
+maxWordLen = 5  # token包含的最多字的个数
 vocab_size = 4500
 char_size = 3000
-
-batch_size = 200
+vocabFile = 'data/wordlist.txt'
+charFile = 'data/charlist.txt'
 
 def CutSentence(s):
     return jieba.lcut(s)
@@ -25,8 +22,6 @@ def CutSentence(s):
 '''
 def MakeVocab():
     global id2w, w2id, id2c, c2id
-    vocabFile = 'data/wordlist.txt'
-    charFile = 'data/charlist.txt'
     freqw = []
     freqc = []
     if os.path.exists(vocabFile):

@@ -35,15 +35,17 @@ learned:
     4. Masking
     5. TimeDistributed
     6. 重写Adam
+    7. ModelCheckpoint
 '''
 
 time.clock()
 
 embedding_dim = 16
 char_embd_dim = 16
-
-lstm_dim = 32
 batch_size = 200
+epochs = 50
+trainFile = r'data/QATdata.txt'
+validateFile = r'data/QATtest.txt'
 
 class GlobalAveragePooling1DMasked(GlobalAveragePooling1D):
     def compute_mask(self, input, input_mask=None):
@@ -130,10 +132,6 @@ def makeType(train, valid):
 
 if __name__ == '__main__':
 
-    TRAINNUM = 234666
-    TESTNUM = 1000
-    trainFile = r'data/QATdata.txt'
-    validateFile = r'data/QATtest.txt'
     MakeVocab()
     Xq, Xqc = MakeOwnDatas(trainFile)
     tXq, tXqc = MakeOwnDatas(validateFile)
@@ -143,7 +141,7 @@ if __name__ == '__main__':
     mm = model()
     mm.summary()
     print('load ok %.3f' % time.clock())
-    mm.fit([Xq, Xqc], yq, batch_size=batch_size, epochs=100, verbose=2,
+    mm.fit([Xq, Xqc], yq, batch_size=batch_size, epochs=epochs, verbose=2,
             validation_data=([tXq, tXqc], tyq),
             callbacks=[ModelCheckpoint('anstype.h5', save_weights_only=False, save_best_only=True, period=5)])
 
