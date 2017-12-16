@@ -134,7 +134,6 @@ def makeType(train, valid):
     return np.array(qy), np.array(tyq)
 
 def predict_y():
-    print('predict......')
     # 在load_model的时候需要声明自定义层
     model = load_model('anstype.h5',
                        custom_objects={'GlobalAveragePooling1DMasked': GlobalAveragePooling1DMasked,
