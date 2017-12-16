@@ -31,6 +31,7 @@ decode = Dense(784, activation='sigmoid')(encode)
 
 autoencoder = Model(input=input_img, output=decode)
 
+# 自定义loss function
 def contractive_loss(y_true, y_pred):
     cross_entropy = binary_crossentropy(y_true, y_pred)
     mse = mean_squared_error(y_true, y_pred)
