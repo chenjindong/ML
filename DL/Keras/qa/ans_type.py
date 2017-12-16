@@ -1,11 +1,12 @@
-import time
+#!/home/user0/anaconda3/bin/python
+import time, os
 import ljqpy
 import numpy as np
 from databunch import maxQLen, maxWordLen, vocab_size, char_size
 from databunch import CutSentence, Tokens2Intlist, Chars2Intlist, MakeVocab
+from weight_norm import AdamWithWeightnorm
 
-
-from keras.models import Model
+from keras.models import Model, load_model
 from keras.callbacks import ModelCheckpoint
 from keras.layers import Input
 from keras.layers.embeddings import Embedding
@@ -20,7 +21,6 @@ from keras.layers.wrappers import TimeDistributed
 import keras.backend as K
 import tensorflow as tf
 
-
 '''
 task:
     input：question
@@ -29,16 +29,18 @@ example
     input：谁演唱了青花瓷？
     output：人物
 learned:
-    1. 重写GlobalAveragePooling1D
-    2. SpatialDropout1D
-    3. BatchNormalization
-    4. Masking
-    5. TimeDistributed
-    6. 重写Adam
-    7. ModelCheckpoint
+    · Lambda层：如果该层不包含需要训练的参数，那么用Lambda比较合适；反之用自定义层 (custom layer)
+    · load_model: 加载包含自定义层的model
+    · 自定义层GlobalAveragePooling1D
+    · 自定义优化函数AdamWithWeightnorm
+    · ModelCheckpoint：训练过程中定期保存最优模型
+    · SpatialDropout1D
+    · BatchNormalization
+    · Masking
+    · TimeDistributed
 '''
 
-time.clock()
+start = time.clock()
 
 embedding_dim = 16
 char_embd_dim = 16
@@ -87,7 +89,6 @@ def model():
     final = GlobalAveragePooling1DMasked()(quest_emb)  # Polling1D只能处理2阶tensor
     final = Dense(typelen, activation='softmax')(final)
 
-    from weight_norm import AdamWithWeightnorm
 
     mm = Model(inputs=[quest_input, questC_input], outputs=final)
     mm.compile(AdamWithWeightnorm(0.01), 'sparse_categorical_crossentropy', metrics=['accuracy'])
@@ -107,7 +108,8 @@ def MakeOwnDatas(train):
 
 def makeType(train, valid):
     global typelen
-    global type2num
+    global type2num, num2type
+    global validl
     answertypelist = []
     trainl = ljqpy.LoadCSV(train)
     validl = ljqpy.LoadCSV(valid)
@@ -120,6 +122,7 @@ def makeType(train, valid):
     answertypelist = list(set(answertypelist))
     typelen = len(answertypelist)
     type2num = {y: x for x, y in enumerate(answertypelist)}
+    num2type = {val:key for key,val in type2num.items()}
     qy = []
     for each in trainl:
         t = each[2]
@@ -130,19 +133,41 @@ def makeType(train, valid):
         tyq.append(type2num[t])
     return np.array(qy), np.array(tyq)
 
+def predict_y():
+    print('predict......')
+    # 在load_model的时候需要声明自定义层
+    model = load_model('anstype.h5',
+                       custom_objects={'GlobalAveragePooling1DMasked': GlobalAveragePooling1DMasked,
+                                        'AdamWithWeightnorm': AdamWithWeightnorm})
+    predict = model.predict([tXq, tXqc])
+    y = np.argmax(predict, axis=1)
+    res = []
+    for i in range(100):
+        if len(validl[i]) == 3:
+            res.append([validl[i][0], validl[i][1], num2type.get(y[i])])
+    ljqpy.SaveCSV(res, 'predict.txt')
+
 if __name__ == '__main__':
 
+    # 构建training data and test data
     MakeVocab()
     Xq, Xqc = MakeOwnDatas(trainFile)
     tXq, tXqc = MakeOwnDatas(validateFile)
     yq, tyq = makeType(trainFile, validateFile)
     print(Xq.shape, Xqc.shape, yq.shape)
     print(tXq.shape, tXqc.shape, tyq.shape)
-    mm = model()
-    mm.summary()
-    print('load ok %.3f' % time.clock())
-    mm.fit([Xq, Xqc], yq, batch_size=batch_size, epochs=epochs, verbose=2,
-            validation_data=([tXq, tXqc], tyq),
-            callbacks=[ModelCheckpoint('anstype.h5', save_weights_only=False, save_best_only=True, period=5)])
 
-    print('completed')
+    if os.path.exists('anstype.h5'):
+        print('predict......')
+        predict_y()
+    else:
+        print('tranning......')
+        mm = model()
+        mm.summary()
+        print('load ok %.3f' % time.clock())
+        mm.fit([Xq, Xqc], yq, batch_size=batch_size, epochs=epochs, verbose=2,
+                validation_data=([tXq, tXqc], tyq),
+                callbacks=[ModelCheckpoint('anstype.h5', save_weights_only=False, save_best_only=True, period=5)])
+        print('completed')
+
+    print(time.clock()-start)

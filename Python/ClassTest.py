@@ -9,7 +9,7 @@ class Student(object):
         self.name = name
         self.age = age
 
-
+print(__name__)
 print(Student.__name__)  # 特殊的类属性
 # print(Student.__doc__)
 print(Student.__bases__)  # 类的所有父类组成的元组
