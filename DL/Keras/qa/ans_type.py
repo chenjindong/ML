@@ -42,10 +42,10 @@ learned:
 
 start = time.clock()
 
-embedding_dim = 16
-char_embd_dim = 16
-batch_size = 200
-epochs = 50
+embedding_dim = 6
+char_embd_dim = 6
+batch_size = 128
+epochs = 200
 trainFile = r'data/QATdata.txt'
 validateFile = r'data/QATtest.txt'
 
@@ -67,7 +67,7 @@ def model():
 
     # token embedding
     embed_layer = Embedding(vocab_size + 2, embedding_dim, mask_zero=True)
-    quest_emb = SpatialDropout1D(0.8)(embed_layer(quest_input))
+    quest_emb = SpatialDropout1D(rate=0.8)(embed_layer(quest_input))
     quest_emb = BatchNormalization()(quest_emb)
     quest_emb = Masking()(quest_emb)  # (None, 16)
 
@@ -143,8 +143,9 @@ def predict_y():
     res = []
     for i in range(100):
         if len(validl[i]) == 3:
-            res.append([validl[i][0], validl[i][1], num2type.get(y[i])])
+            res.append([validl[i][0], validl[i][1], validl[i][2], num2type.get(y[i])])
     ljqpy.SaveCSV(res, 'predict.txt')
+
 
 if __name__ == '__main__':
 
@@ -156,17 +157,15 @@ if __name__ == '__main__':
     print(Xq.shape, Xqc.shape, yq.shape)
     print(tXq.shape, tXqc.shape, tyq.shape)
 
-    if os.path.exists('anstype.h5'):
-        print('predict......')
-        predict_y()
-    else:
-        print('tranning......')
-        mm = model()
-        mm.summary()
-        print('load ok %.3f' % time.clock())
-        mm.fit([Xq, Xqc], yq, batch_size=batch_size, epochs=epochs, verbose=2,
+    print('tranning......')
+    mm = model()
+    mm.summary()
+    print('load ok %.3f' % time.clock())
+    checkpoint = ModelCheckpoint('anstype.h5', save_weights_only=False, save_best_only=True, period=5)
+    hist = mm.fit([Xq, Xqc], yq, batch_size=batch_size, epochs=epochs, verbose=2,
                 validation_data=([tXq, tXqc], tyq),
-                callbacks=[ModelCheckpoint('anstype.h5', save_weights_only=False, save_best_only=True, period=5)])
-        print('completed')
-
+                callbacks=[checkpoint])
+    print('completed')
+    predict_y()
+    print('class number', len(type2num))
     print(time.clock()-start)

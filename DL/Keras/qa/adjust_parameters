@@ -1,0 +1,14 @@
+embedding_dim = 6
+char_embd_dim = 6
+调大容易过拟合，loss过大，val_loss过小
+
+batch_size=128
+batch_size越大，跑完一个epoch的时间越短
+
+SpatialDropout1D(rate=0.8)
+rate越大，越容易过拟合
+
+
+BatchNormalization()
+容易收敛
+
