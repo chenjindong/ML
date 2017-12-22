@@ -7,7 +7,7 @@ from databunch import CutSentence, Tokens2Intlist, Chars2Intlist, MakeVocab
 from weight_norm import AdamWithWeightnorm
 
 from keras.models import Model, load_model
-from keras.callbacks import ModelCheckpoint
+from keras.callbacks import ModelCheckpoint, TensorBoard
 from keras.layers import Input
 from keras.layers.embeddings import Embedding
 from keras.layers.pooling import GlobalAveragePooling1D
@@ -42,8 +42,8 @@ learned:
 
 start = time.clock()
 
-embedding_dim = 6
-char_embd_dim = 6
+embedding_dim = 8
+char_embd_dim = 8
 batch_size = 128
 epochs = 200
 trainFile = r'data/QATdata.txt'
@@ -67,7 +67,7 @@ def model():
 
     # token embedding
     embed_layer = Embedding(vocab_size + 2, embedding_dim, mask_zero=True)
-    quest_emb = SpatialDropout1D(rate=0.8)(embed_layer(quest_input))
+    quest_emb = SpatialDropout1D(0.8)(embed_layer(quest_input))
     quest_emb = BatchNormalization()(quest_emb)
     quest_emb = Masking()(quest_emb)  # (None, 16)
 
@@ -140,7 +140,7 @@ def predict_y():
                                         'AdamWithWeightnorm': AdamWithWeightnorm})
     predict = model.predict([tXq, tXqc])
     y = np.argmax(predict, axis=1)
-    res = []
+    res = [['question', 'answer', 'groundtruth', 'predict']]
     for i in range(100):
         if len(validl[i]) == 3:
             res.append([validl[i][0], validl[i][1], validl[i][2], num2type.get(y[i])])
@@ -161,10 +161,12 @@ if __name__ == '__main__':
     mm = model()
     mm.summary()
     print('load ok %.3f' % time.clock())
+    log_filepath = '/tmp/keras_log'  # run [tensorboard --logdir='/temp/keras_log'] to show loss, acc
+    tb_cb = TensorBoard(log_dir=log_filepath, write_images=1, histogram_freq=1)  
     checkpoint = ModelCheckpoint('anstype.h5', save_weights_only=False, save_best_only=True, period=5)
     hist = mm.fit([Xq, Xqc], yq, batch_size=batch_size, epochs=epochs, verbose=2,
                 validation_data=([tXq, tXqc], tyq),
-                callbacks=[checkpoint])
+                callbacks=[checkpoint,tb_cb])
     print('completed')
     predict_y()
     print('class number', len(type2num))
