@@ -11,7 +11,7 @@ train_samples = int(len(y)*0.8)  # 80% training data; 20% test data
 x_train, y_train = x[:train_samples], y[:train_samples]
 x_test, y_test = x[train_samples:], y[train_samples:]
 
-lr = LogisticRegression(solver='sgd')
+lr = LogisticRegression()
 
 model = lr.fit(x_train, y_train)
 
