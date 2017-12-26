@@ -41,7 +41,6 @@ class LR:
         acc = accuracy_score(self.y_train, y)
         loss = log_loss(self.y_train, y)
 
-
         z = self.x_test * self.w
         prob = sigmoid(z)
         y = prob >= 0.5
