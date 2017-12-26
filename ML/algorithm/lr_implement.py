@@ -27,6 +27,7 @@ class LR:
         # dataset
         self.x_train, self.y_train = np.mat(x[:nums]), np.mat(y[:nums]).transpose()
         self.x_test, self.y_test = np.mat(x[nums:]), np.mat(y[nums:]).transpose()
+        
         # 数据按列归一化
         self.x_train = preprocessing.normalize(self.x_train, axis=0)
         self.x_test = preprocessing.normalize(self.x_test, axis=0)
