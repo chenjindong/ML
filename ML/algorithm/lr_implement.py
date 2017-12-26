@@ -13,11 +13,9 @@ learned:
     · log_loss相当于keras中的binary_entropy
     
 '''
+eta = 0.001  # learning rate
+split_rate = 0.7  # training set and validation set rate
 
-data = load_breast_cancer()
-x, y = data['data'], data['target']
-nums = int(0.8 * len(y))  # training data 80%
-eta = 0.001 # learning rate
 
 def sigmoid(x):
     return 1.0 / (1 + np.exp(-x))
@@ -25,9 +23,9 @@ def sigmoid(x):
 class LR:
     def __init__(self):
         # dataset
+        nums = int(split_rate*len(y))
         self.x_train, self.y_train = np.mat(x[:nums]), np.mat(y[:nums]).transpose()
         self.x_test, self.y_test = np.mat(x[nums:]), np.mat(y[nums:]).transpose()
-        
         # 数据按列归一化
         self.x_train = preprocessing.normalize(self.x_train, axis=0)
         self.x_test = preprocessing.normalize(self.x_test, axis=0)
@@ -70,6 +68,10 @@ class LR:
             self.cal_acc(i)
 
 if __name__ == '__main__':
+
+    data = load_breast_cancer()
+    x, y = data['data'], data['target']
+
     model = LR()
     # model.train_gd()
     model.train_sgd()
