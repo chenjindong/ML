@@ -5,7 +5,7 @@ import jieba
 
 '''
 python中多线程just like a shit
-python中的多进程相当于现实意义的多进程
+python中的多进程相当于现实意义的多线程
 run time:
     single thread: 53.56s
     5 multi-thread: 7.09s
