@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 import nltk
 import time
-
+from sklearn_crfsuite import CRF
+from sklearn.model_selection import cross_val_predict, train_test_split
+from sklearn_crfsuite.metrics import flat_classification_report
 '''
 ref:
 https://www.depends-on-the-definition.com/named-entity-recognition-conditional-random-fields-python/
@@ -118,27 +120,28 @@ def sent2tokens(sent):
 
 X = [sent2features(s) for s in sentences]
 y = [sent2labels(s) for s in sentences]  # label sequence, e.g., ['O', 'O', 'B-geo', 'O', 'O', 'O', 'B-geo', 'O']
-print(X[:1][0])
-print(y[:1][0])
-assert False
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# print(X[:1][0])
+# print(y[:1][0])
 
-from sklearn_crfsuite import CRF
 
-crf = CRF(algorithm='lbfgs',
+# assert False
+crf = CRF(algorithm='lbfgs', min_freq=1,
           c1=0.1,
           c2=0.1,
           max_iterations=100,
           all_possible_transitions=False)
 
-# crf.fit(X, y)
+crf.fit(X_train, y_train)
+pred = crf.predict(X_test)
 
-from sklearn.cross_validation import cross_val_predict
-from sklearn_crfsuite.metrics import flat_classification_report
-
-pred = cross_val_predict(estimator=crf, X=X, y=y, cv=5)
-
-report = flat_classification_report(y_pred=pred, y_true=y)
+report = flat_classification_report(y_pred=pred, y_true=y_test)
 print(report)
 
+# res = crf.predict(X_test[:4])
+# print(res)
+# res = res[0]
+# for i in range(len(res)):
+#     print(X_test[0][i], res[i])
 
 print(time.time()-start)
