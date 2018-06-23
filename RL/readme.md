@@ -1,2 +1,2 @@
-These code are derived from https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow.
-To better understand the algorithms, I add some comment in the code.
+These codes are derived from https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow.
+I add some comment to better understand the algorithms.
