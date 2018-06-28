@@ -11,11 +11,10 @@ gym: 0.8.0
 """
 
 import gym
+import time
 from RL_brain import PolicyGradient
 import matplotlib.pyplot as plt
 
-DISPLAY_REWARD_THRESHOLD = 400  # renders environment if total episode reward is greater then this threshold
-RENDER = False  # rendering wastes time
 
 env = gym.make('CartPole-v0')
 env.seed(1)     # reproducible, general Policy gradient has high variance
@@ -37,9 +36,9 @@ RL = PolicyGradient(
 for i_episode in range(3000):
 
     observation = env.reset()
-
+    start = time.clock()
     while True:
-        if RENDER: env.render()
+        env.render()
 
         action = RL.choose_action(observation)
 
@@ -48,21 +47,20 @@ for i_episode in range(3000):
         RL.store_transition(observation, action, reward)
 
         if done:  # 基于回合的学习
-            ep_rs_sum = sum(RL.ep_rs)
+            ep_rs_sum = sum(RL.ep_rs)  # calculate total reward of this episode
 
             if 'running_reward' not in globals():
                 running_reward = ep_rs_sum
             else:
                 running_reward = running_reward * 0.99 + ep_rs_sum * 0.01
-            if running_reward > DISPLAY_REWARD_THRESHOLD: RENDER = True     # rendering
-            print("episode:", i_episode, "  reward:", int(running_reward))
+            print("episode:", i_episode, "  reward:", int(running_reward), " time:", time.clock()-start)
 
             vt = RL.learn()
-
-            if i_episode == 0:
-                plt.plot(vt)    # plot the episode vt
-                plt.xlabel('episode steps')
-                plt.ylabel('normalized state-action value')
+            if i_episode == 10:
+                # plot 第10个episode的每个step的reward
+                plt.plot(vt)
+                plt.xlabel('steps in this episode')
+                plt.ylabel('normalized state-action value (i.e., reward)')
                 plt.show()
             break
 

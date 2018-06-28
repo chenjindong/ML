@@ -42,9 +42,9 @@ class PolicyGradient:
 
     def _build_net(self):
         with tf.name_scope('inputs'):
-            self.tf_obs = tf.placeholder(tf.float32, [None, self.n_features], name="observations")
-            self.tf_acts = tf.placeholder(tf.int32, [None, ], name="actions_num")
-            self.tf_vt = tf.placeholder(tf.float32, [None, ], name="actions_value")
+            self.tf_obs = tf.placeholder(tf.float32, [None, self.n_features], name="observations")  # 相当于监督学习的样本
+            self.tf_acts = tf.placeholder(tf.int32, [None, ], name="actions_num")  # 相当于监督学习的label
+            self.tf_vt = tf.placeholder(tf.float32, [None, ], name="actions_value")  # 评价当前状态执行action优劣指标
         # fc1
         layer = tf.layers.dense(
             inputs=self.tf_obs,
@@ -77,17 +77,21 @@ class PolicyGradient:
             self.train_op = tf.train.AdamOptimizer(self.lr).minimize(loss)
 
     def choose_action(self, observation):
+        """通过policy network进行action选择"""
         prob_weights = self.sess.run(self.all_act_prob, feed_dict={self.tf_obs: observation[np.newaxis, :]})
         action = np.random.choice(range(prob_weights.shape[1]), p=prob_weights.ravel())  # 按照概率选择action
         return action
 
     def store_transition(self, s, a, r):
+        """
+        记录当前state s执行action a 获得的reward
+        """
         self.ep_obs.append(s)
         self.ep_as.append(a)
         self.ep_rs.append(r)
 
     def learn(self):
-        # discount and normalize episode reward
+        # discount and normalize episode reward （这个操作很关键）
         discounted_ep_rs_norm = self._discount_and_norm_rewards()
 
         # train on episode
@@ -101,13 +105,17 @@ class PolicyGradient:
         return discounted_ep_rs_norm
 
     def _discount_and_norm_rewards(self):
-        # discount episode rewards
+        """
+        对reward进行discount，然后归一化
+        reward计算思路：在一个episode内，pole平衡的时候，reward永远是+1，
+        当reward倒下时，episode结束，所以理论上一开始的reward应该更大
+        """
+        # discount episode reward
         discounted_ep_rs = np.zeros_like(self.ep_rs)
         running_add = 0
         for t in reversed(range(0, len(self.ep_rs))):
             running_add = running_add * self.gamma + self.ep_rs[t]
             discounted_ep_rs[t] = running_add
-
         # normalize episode rewards
         discounted_ep_rs -= np.mean(discounted_ep_rs)
         discounted_ep_rs /= np.std(discounted_ep_rs)
