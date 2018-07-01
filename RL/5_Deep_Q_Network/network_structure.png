@@ -1,11 +1,17 @@
 """
-Nature2015 DQN的实现;
-    Q Network用于计算状态s下执行动作a的价值Q(s,a);
-    Target Q Network的引入是为了experience replay中样本之间的相关性;
-    DQN是单步更新的;
+This part of code is the DQN brain, which is a brain of the agent.
+All decisions are made in here.
+Using Tensorflow to build the neural network.
+
+View more on my tutorial page: https://morvanzhou.github.io/tutorials/
+
+Using:
+Tensorflow: 1.0
+gym: 0.7.3
 """
 
 import numpy as np
+import pandas as pd
 import tensorflow as tf
 
 np.random.seed(1)
@@ -76,7 +82,6 @@ class DeepQNetwork:
                 w1 = tf.get_variable('w1', [self.n_features, n_l1], initializer=w_initializer, collections=c_names)
                 b1 = tf.get_variable('b1', [1, n_l1], initializer=b_initializer, collections=c_names)
                 l1 = tf.nn.relu(tf.matmul(self.s, w1) + b1)
-                # l1 = tf.layers.dense(self.s, n_l1, activation='relu')  用这种方式写无法将Q NN的参数赋值给target-Q NN
 
             # second layer. collections is used later when assign to target net
             with tf.variable_scope('l2'):
@@ -85,13 +90,12 @@ class DeepQNetwork:
                 self.q_eval = tf.matmul(l1, w2) + b2
 
         with tf.variable_scope('loss'):
-            self.loss = tf.reduce_mean(tf.squared_difference(self.q_target, self.q_eval))  # mse loss
+            self.loss = tf.reduce_mean(tf.squared_difference(self.q_target, self.q_eval))
         with tf.variable_scope('train'):
             self._train_op = tf.train.RMSPropOptimizer(self.lr).minimize(self.loss)
 
         # ------------------ build target NN ------------------
         # 用于计算 max Q(s', a')， 定期把evaluation NN的网络参数assign给target NN
-        # 引入target-Q network的motivation参考Nature DQN paper
         self.s_ = tf.placeholder(tf.float32, [None, self.n_features], name='s_')    # input
         with tf.variable_scope('target_net'):
             # c_names(collections_names) are the collections to store variables
@@ -163,12 +167,11 @@ class DeepQNetwork:
         # change q_target w.r.t q_eval's action, 这几行代码只可意会不可言传
         q_target = q_eval.copy()
 
-        batch_index = np.arange(self.batch_size, dtype=np.int32)  # shape: (batch_size)
-        eval_act_index = batch_memory[:, self.n_features].astype(int)  # action list, shape: (batch_size)
-        reward = batch_memory[:, self.n_features + 1]  # reward list, shape (batch_size)
+        batch_index = np.arange(self.batch_size, dtype=np.int32)  # [0,1,...,31]
+        eval_act_index = batch_memory[:, self.n_features].astype(int)
+        reward = batch_memory[:, self.n_features + 1]
 
         q_target[batch_index, eval_act_index] = reward + self.gamma * np.max(q_next, axis=1)  # 计算TargetQ, i.e., label
-
 
         """
         For example in this batch I have 2 samples and 3 actions:

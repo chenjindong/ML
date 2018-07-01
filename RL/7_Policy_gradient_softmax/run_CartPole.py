@@ -3,11 +3,8 @@ Policy Gradient, Reinforcement Learning.
 
 The cart pole example
 
-View more on my tutorial page: https://morvanzhou.github.io/tutorials/
+传统的Policy gradient是回合更新的
 
-Using:
-Tensorflow: 1.0
-gym: 0.8.0
 """
 
 import gym
