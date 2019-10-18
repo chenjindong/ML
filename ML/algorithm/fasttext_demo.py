@@ -6,6 +6,8 @@ import random
 import json
 from collections import Counter
 
+# https://fasttext.cc/docs/en/python-module.html
+
 def get_feature(sent):
     # get 1-gram and 2-gram feature from sentences
     chars = []
